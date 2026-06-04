@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Las Cabras | Marketing Digital</title>
+<meta name="description" content="Aprende marketing digital desde cero. Cursos online y recursos descargables para adultos y adolescentes que quieren dominar el mundo digital.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #2B2B6B;
+  --navy-light: #3d3d8f;
+  --navy-dark: #1a1a45;
+  --silver: #9B9BAA;
+  --silver-light: #c8c8d4;
+  --white: #ffffff;
+  --off-white: #f5f5f8;
+  --accent: #4a4aaa;
+  --text: #1a1a2e;
+  --text-muted: #6b6b80;
+  --border: rgba(43,43,107,0.12);
+  --font-display: 'Barlow Condensed', sans-serif;
+  --font-body: 'Barlow', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--white);
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5%;
+  height: 70px;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  transition: box-shadow .3s;
+}
+nav.scrolled { box-shadow: 0 4px 24px rgba(43,43,107,0.10); }
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none;
+}
+.nav-logo img, .nav-logo object { height: auto; width: 180px; max-width: 100%; }
+.nav-logo-text { display: none; }
+.nav-links {
+  display: flex; align-items: center; gap: 2rem; list-style: none;
+}
+.nav-links a {
+  text-decoration: none; font-size: 14px; font-weight: 500;
+  color: var(--text-muted); letter-spacing: 0.04em; text-transform: uppercase;
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--navy); }
+.nav-cta {
+  background: var(--navy); color: var(--white) !important;
+  padding: 8px 20px; border-radius: 4px; font-weight: 600 !important;
+}
+.nav-cta:hover { background: var(--navy-light); color: var(--white) !important; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.hamburger span { display: block; width: 24px; height: 2px; background: var(--navy); border-radius: 2px; transition: all .3s; }
+.mobile-menu {
+  display: none; position: fixed; top: 70px; left: 0; right: 0; z-index: 99;
+  background: var(--white); border-bottom: 1px solid var(--border);
+  padding: 1.5rem 5%; flex-direction: column; gap: 1rem;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  text-decoration: none; font-size: 16px; font-weight: 600;
+  color: var(--navy); text-transform: uppercase; letter-spacing: 0.06em;
+  padding: 0.5rem 0; border-bottom: 1px solid var(--border);
+}
+
+/* ── HERO ── */
+#inicio {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding: 70px 5% 0;
+  background: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg-shape {
+  position: absolute; right: -5%; top: 0; bottom: 0; width: 55%;
+  background: var(--off-white);
+  clip-path: polygon(12% 0, 100% 0, 100% 100%, 0% 100%);
+  z-index: 0;
+}
+.hero-content {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+  align-items: center; width: 100%; max-width: 1200px; margin: 0 auto;
+}
+.hero-left { padding: 4rem 0; }
+.hero-eyebrow {
+  font-size: 13px; font-weight: 600; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--accent);
+  margin-bottom: 1.2rem; display: flex; align-items: center; gap: 10px;
+}
+.hero-eyebrow::before {
+  content: ''; display: block; width: 32px; height: 2px; background: var(--accent);
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(52px, 7vw, 88px);
+  font-weight: 900; line-height: 0.95;
+  text-transform: uppercase; letter-spacing: -0.01em;
+  color: var(--navy-dark); margin-bottom: 1.5rem;
+}
+.hero-title em {
+  font-style: normal; color: var(--accent);
+  display: block;
+}
+.hero-subtitle {
+  font-size: 18px; line-height: 1.65; color: var(--text-muted);
+  max-width: 440px; margin-bottom: 2.5rem; font-weight: 400;
+}
+.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--navy); color: var(--white);
+  padding: 14px 32px; border-radius: 4px;
+  font-family: var(--font-display); font-size: 18px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  text-decoration: none; transition: all .2s;
+  border: 2px solid var(--navy);
+}
+.btn-primary:hover { background: var(--navy-light); border-color: var(--navy-light); transform: translateY(-1px); }
+.btn-outline {
+  background: transparent; color: var(--navy);
+  padding: 14px 32px; border-radius: 4px;
+  font-family: var(--font-display); font-size: 18px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  text-decoration: none; transition: all .2s;
+  border: 2px solid var(--navy);
+}
+.btn-outline:hover { background: var(--navy); color: var(--white); transform: translateY(-1px); }
+.hero-stats {
+  display: flex; gap: 2.5rem; margin-top: 3rem; padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+.hero-stat-val {
+  font-family: var(--font-display); font-size: 36px; font-weight: 900;
+  color: var(--navy); line-height: 1;
+}
+.hero-stat-lbl { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+.hero-right { display: flex; justify-content: center; align-items: center; }
+.hero-logo-wrap {
+  position: relative; width: 460px; max-width: 100%;
+  background: rgba(255,255,255,0.85);
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 24px 80px rgba(43,43,107,0.18);
+}
+.hero-logo-wrap img { width: 100%; height: auto; display: block; }
+
+/* ── SECTIONS SHARED ── */
+section { padding: 6rem 5%; }
+.section-label {
+  font-size: 12px; font-weight: 700; letter-spacing: 0.24em;
+  text-transform: uppercase; color: var(--accent);
+  margin-bottom: 0.75rem; display: flex; align-items: center; gap: 10px;
+}
+.section-label::before { content: ''; display: block; width: 24px; height: 2px; background: var(--accent); }
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 900; line-height: 1.0;
+  text-transform: uppercase; color: var(--navy-dark);
+  margin-bottom: 1rem;
+}
+.section-subtitle { font-size: 17px; color: var(--text-muted); max-width: 560px; line-height: 1.65; }
+
+/* ── SOBRE MI ── */
+#sobre-mi { background: var(--navy-dark); color: var(--white); }
+#sobre-mi .section-label { color: var(--silver-light); }
+#sobre-mi .section-label::before { background: var(--silver-light); }
+#sobre-mi .section-title { color: var(--white); }
+#sobre-mi .section-subtitle { color: rgba(255,255,255,0.65); }
+.sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; max-width: 1200px; margin: 0 auto; }
+.sobre-text { margin-top: 2rem; }
+.sobre-text p { font-size: 16px; line-height: 1.75; color: rgba(255,255,255,0.75); margin-bottom: 1.25rem; }
+.sobre-text p strong { color: var(--white); }
+.sobre-values { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+.sobre-value {
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px; padding: 1.25rem;
+}
+.sobre-value-icon { font-size: 24px; margin-bottom: 0.5rem; }
+.sobre-value-title { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--white); text-transform: uppercase; margin-bottom: 0.25rem; }
+.sobre-value-text { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.5; }
+.sobre-visual {
+  background: rgba(255,255,255,0.05);
+  border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);
+  padding: 3rem; text-align: center;
+}
+.sobre-visual img { width: 80%; max-width: 340px; height: auto; filter: brightness(0) invert(1) opacity(0.85); }
+.sobre-visual-caption {
+  margin-top: 1.5rem; font-size: 14px; color: rgba(255,255,255,0.5); letter-spacing: 0.06em; text-transform: uppercase;
+}
+
+/* ── CURSOS ── */
+#cursos { background: var(--off-white); }
+.cursos-intro { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; max-width: 1200px; margin-left: auto; margin-right: auto; }
+.cursos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; max-width: 1200px; margin: 0 auto; }
+.curso-card {
+  background: var(--white); border-radius: 12px;
+  border: 1px solid var(--border); overflow: hidden;
+  transition: transform .25s, box-shadow .25s;
+}
+.curso-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(43,43,107,0.12); }
+.curso-card-top {
+  height: 180px; background: var(--navy);
+  display: flex; align-items: center; justify-content: center; position: relative;
+  overflow: hidden;
+}
+.curso-card-top.alt { background: var(--navy-light); }
+.curso-card-top.alt2 { background: var(--navy-dark); }
+.curso-card-badge {
+  position: absolute; top: 12px; right: 12px;
+  background: var(--white); color: var(--navy);
+  font-size: 11px; font-weight: 700; padding: 4px 10px;
+  border-radius: 99px; text-transform: uppercase; letter-spacing: 0.08em;
+}
+.curso-card-badge.pronto { background: rgba(255,255,255,0.2); color: var(--white); border: 1px solid rgba(255,255,255,0.3); }
+.curso-card-icon { font-size: 64px; opacity: 0.3; }
+.curso-card-body { padding: 1.5rem; }
+.curso-card-level {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem;
+}
+.curso-card-title {
+  font-family: var(--font-display); font-size: 24px; font-weight: 800;
+  text-transform: uppercase; color: var(--navy-dark); margin-bottom: 0.75rem; line-height: 1.15;
+}
+.curso-card-desc { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.25rem; }
+.curso-card-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 1rem; border-top: 1px solid var(--border);
+}
+.curso-price { font-family: var(--font-display); font-size: 28px; font-weight: 900; color: var(--navy); }
+.curso-price span { font-size: 14px; font-weight: 400; color: var(--text-muted); }
+.btn-small {
+  background: var(--navy); color: var(--white);
+  padding: 8px 18px; border-radius: 4px;
+  font-family: var(--font-display); font-size: 15px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  text-decoration: none; transition: all .2s; border: none; cursor: pointer;
+}
+.btn-small:hover { background: var(--navy-light); }
+.btn-small.disabled { background: var(--silver); cursor: default; }
+
+/* ── DESCARGABLES ── */
+#descargables { background: var(--white); }
+.desc-intro { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; max-width: 1200px; margin-left: auto; margin-right: auto; }
+.desc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; max-width: 1200px; margin: 0 auto; }
+.desc-card {
+  border: 1.5px solid var(--border); border-radius: 10px; padding: 1.5rem;
+  display: flex; flex-direction: column; gap: 0.75rem;
+  transition: border-color .2s, box-shadow .2s;
+}
+.desc-card:hover { border-color: var(--navy); box-shadow: 0 8px 32px rgba(43,43,107,0.10); }
+.desc-card-header { display: flex; align-items: center; gap: 12px; }
+.desc-card-ico {
+  width: 44px; height: 44px; border-radius: 8px;
+  background: var(--off-white); display: flex; align-items: center; justify-content: center; font-size: 22px;
+}
+.desc-card-type { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
+.desc-card-title { font-family: var(--font-display); font-size: 20px; font-weight: 800; text-transform: uppercase; color: var(--navy-dark); line-height: 1.15; }
+.desc-card-desc { font-size: 13px; color: var(--text-muted); line-height: 1.55; flex: 1; }
+.desc-card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; }
+.desc-price { font-family: var(--font-display); font-size: 22px; font-weight: 900; color: var(--navy); }
+.tag-free-badge {
+  font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+  color: #1a7a4a; background: #e8f8f0; padding: 3px 10px; border-radius: 99px;
+}
+
+/* ── YOUTUBE ── */
+#videos { background: var(--navy-dark); }
+#videos .section-label { color: var(--silver-light); }
+#videos .section-label::before { background: var(--silver-light); }
+#videos .section-title { color: var(--white); }
+#videos .section-subtitle { color: rgba(255,255,255,0.6); }
+.yt-header { max-width: 1200px; margin: 0 auto 3rem; }
+.yt-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; max-width: 1200px; margin: 0 auto; }
+.yt-card {
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px; overflow: hidden;
+  transition: background .25s, transform .25s;
+}
+.yt-card:hover { background: rgba(255,255,255,0.08); transform: translateY(-3px); }
+.yt-thumb {
+  aspect-ratio: 16/9; background: rgba(255,255,255,0.08);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 48px; position: relative; overflow: hidden; cursor: pointer;
+}
+.yt-thumb iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; display: none; }
+.yt-thumb.playing iframe { display: block; }
+.yt-thumb.playing .yt-play-btn { display: none; }
+.yt-play-btn {
+  width: 60px; height: 60px; border-radius: 50%;
+  background: #FF0000; display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: transform .2s;
+}
+.yt-play-btn:hover { transform: scale(1.1); }
+.yt-play-btn::after {
+  content: ''; display: block;
+  border-left: 22px solid white; border-top: 13px solid transparent; border-bottom: 13px solid transparent;
+  margin-left: 4px;
+}
+.yt-card-body { padding: 1.25rem; }
+.yt-card-title { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--white); text-transform: uppercase; margin-bottom: 0.5rem; line-height: 1.2; }
+.yt-card-desc { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+.yt-placeholder {
+  text-align: center; padding: 4rem 2rem; max-width: 600px; margin: 0 auto;
+  border: 1.5px dashed rgba(255,255,255,0.2); border-radius: 12px;
+  grid-column: 1 / -1;
+}
+.yt-placeholder p { color: rgba(255,255,255,0.5); font-size: 15px; line-height: 1.6; }
+.yt-placeholder strong { color: var(--white); display: block; font-family: var(--font-display); font-size: 22px; font-weight: 800; text-transform: uppercase; margin-bottom: 0.5rem; }
+
+/* ── BLOG ── */
+#blog { background: var(--off-white); }
+.blog-intro { max-width: 1200px; margin: 0 auto 3rem; }
+.blog-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem; max-width: 1200px; margin: 0 auto; }
+.blog-card {
+  background: var(--white); border-radius: 12px;
+  border: 1px solid var(--border); overflow: hidden;
+  transition: transform .25s, box-shadow .25s;
+  display: flex; flex-direction: column;
+}
+.blog-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(43,43,107,0.10); }
+.blog-card-top {
+  height: 220px; background: var(--navy);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 72px; opacity: 0.6; position: relative;
+}
+.blog-card.small .blog-card-top { height: 140px; font-size: 48px; }
+.blog-cat {
+  position: absolute; bottom: 12px; left: 12px;
+  background: var(--white); color: var(--navy);
+  font-size: 11px; font-weight: 700; padding: 4px 10px;
+  border-radius: 99px; text-transform: uppercase; letter-spacing: 0.08em;
+}
+.blog-card-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+.blog-card.small .blog-card-body { padding: 1.25rem; }
+.blog-meta { font-size: 12px; color: var(--text-muted); margin-bottom: 0.75rem; letter-spacing: 0.04em; }
+.blog-card-title {
+  font-family: var(--font-display); font-weight: 800; text-transform: uppercase;
+  color: var(--navy-dark); line-height: 1.2; margin-bottom: 0.75rem;
+  font-size: 24px;
+}
+.blog-card.small .blog-card-title { font-size: 18px; }
+.blog-card-desc { font-size: 14px; color: var(--text-muted); line-height: 1.6; flex: 1; }
+.blog-link {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 1.25rem;
+  font-size: 13px; font-weight: 700; color: var(--accent);
+  text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase;
+}
+.blog-link::after { content: '→'; }
+.blog-link:hover { color: var(--navy); }
+.blog-right { display: flex; flex-direction: column; gap: 1.5rem; }
+
+/* ── NEWSLETTER / CONTACTO ── */
+#contacto { background: var(--white); }
+.contacto-wrap {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
+}
+.form-group { margin-bottom: 1.25rem; }
+.form-group label { display: block; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 0.5rem; }
+.form-group input, .form-group textarea, .form-group select {
+  width: 100%; padding: 12px 16px;
+  border: 1.5px solid var(--border); border-radius: 6px;
+  font-family: var(--font-body); font-size: 15px; color: var(--text);
+  background: var(--off-white); outline: none; transition: border-color .2s;
+}
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+  border-color: var(--navy); background: var(--white);
+}
+.form-group textarea { height: 120px; resize: vertical; }
+.form-note { font-size: 12px; color: var(--text-muted); margin-top: 0.75rem; }
+.newsletter-box {
+  background: var(--navy-dark); border-radius: 12px; padding: 2.5rem;
+  color: var(--white);
+}
+.newsletter-box .section-label { color: var(--silver-light); }
+.newsletter-box .section-label::before { background: var(--silver-light); }
+.newsletter-title { font-family: var(--font-display); font-size: 36px; font-weight: 900; text-transform: uppercase; color: var(--white); margin-bottom: 1rem; line-height: 1.1; }
+.newsletter-text { font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.65; margin-bottom: 2rem; }
+.newsletter-perks { list-style: none; margin-bottom: 2rem; display: flex; flex-direction: column; gap: 0.6rem; }
+.newsletter-perks li { font-size: 14px; color: rgba(255,255,255,0.75); display: flex; align-items: flex-start; gap: 8px; }
+.newsletter-perks li::before { content: '✓'; font-weight: 700; color: #5fce96; flex-shrink: 0; margin-top: 1px; }
+.nl-form { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.nl-form input {
+  flex: 1; min-width: 200px; padding: 12px 16px;
+  border: 1.5px solid rgba(255,255,255,0.2); border-radius: 6px;
+  font-family: var(--font-body); font-size: 15px; color: var(--white);
+  background: rgba(255,255,255,0.08); outline: none;
+}
+.nl-form input::placeholder { color: rgba(255,255,255,0.35); }
+.nl-form input:focus { border-color: rgba(255,255,255,0.5); }
+.nl-form button {
+  background: var(--white); color: var(--navy);
+  padding: 12px 24px; border: none; border-radius: 6px;
+  font-family: var(--font-display); font-size: 17px; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.06em; cursor: pointer;
+  transition: background .2s;
+}
+.nl-form button:hover { background: var(--silver-light); }
+.success-msg { display: none; background: rgba(95,206,150,0.15); border: 1px solid rgba(95,206,150,0.3); color: #5fce96; padding: 12px 16px; border-radius: 6px; font-size: 14px; margin-top: 1rem; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--navy-dark); color: rgba(255,255,255,0.55);
+  padding: 3rem 5%;
+}
+.footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
+.footer-logo { display: flex; align-items: center; gap: 10px; }
+.footer-logo img { height: auto; width: 140px; filter: brightness(0) invert(1) opacity(0.75); }
+.footer-logo-text { display: none; }
+.footer-logo-text span:first-child { font-family: var(--font-display); font-size: 18px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.04em; color: rgba(255,255,255,0.85); }
+.footer-logo-text span:last-child { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+.footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
+.footer-links a { text-decoration: none; font-size: 13px; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500; transition: color .2s; }
+.footer-links a:hover { color: rgba(255,255,255,0.85); }
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .hero-content { grid-template-columns: 1fr; }
+  .hero-bg-shape { display: none; }
+  .hero-right { display: none; }
+  .sobre-grid { grid-template-columns: 1fr; }
+  .sobre-visual { display: none; }
+  .blog-grid { grid-template-columns: 1fr; }
+  .blog-right { flex-direction: row; overflow-x: auto; }
+  .contacto-wrap { grid-template-columns: 1fr; }
+  .cursos-intro, .desc-intro { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .footer-inner { flex-direction: column; text-align: center; }
+  .footer-links { justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#inicio" class="nav-logo">
+    <img src="logo.svg" alt="Las Cabras logo">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#sobre-mi">Nosotros</a></li>
+    <li><a href="#cursos">Cursos</a></li>
+    <li><a href="#descargables">Recursos</a></li>
+    <li><a href="#videos">Videos</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#contacto" class="nav-cta">Suscribirse</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()" aria-label="Menú" role="button">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#sobre-mi" onclick="toggleMenu()">Nosotros</a>
+  <a href="#cursos" onclick="toggleMenu()">Cursos</a>
+  <a href="#descargables" onclick="toggleMenu()">Recursos</a>
+  <a href="#videos" onclick="toggleMenu()">Videos</a>
+  <a href="#blog" onclick="toggleMenu()">Blog</a>
+  <a href="#contacto" onclick="toggleMenu()">Suscribirse</a>
+</div>
+
+<!-- HERO -->
+<section id="inicio">
+  <div class="hero-bg-shape"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Marketing Digital</div>
+      <h1 class="hero-title">
+        Aprendé<br>
+        <em>marketing</em><br>
+        de verdad
+      </h1>
+      <p class="hero-subtitle">
+        Cursos, recursos y contenido para adultos y adolescentes que quieren dominar el marketing digital sin rodeos y desde cero.
+      </p>
+      <div class="hero-btns">
+        <a href="#cursos" class="btn-primary">Ver cursos</a>
+        <a href="#contacto" class="btn-outline">Suscribirme</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-val">100%</div>
+          <div class="hero-stat-lbl">Contenido práctico</div>
+        </div>
+        <div>
+          <div class="hero-stat-val">0</div>
+          <div class="hero-stat-lbl">Excusas necesarias</div>
+        </div>
+        <div>
+          <div class="hero-stat-val">∞</div>
+          <div class="hero-stat-lbl">Potencial digital</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-logo-wrap">
+        <img src="logo.svg" alt="Las Cabras Marketing Digital">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE MI -->
+<section id="sobre-mi">
+  <div class="sobre-grid">
+    <div>
+      <div class="section-label">Sobre nosotros</div>
+      <h2 class="section-title">¿Quiénes<br>son las<br>cabras?</h2>
+      <div class="sobre-text">
+        <p>Las Cabras nace de la convicción de que el <strong>marketing digital no debería ser complicado</strong>. Somos un emprendimiento uruguayo que cree que cualquier persona, sin importar su edad o experiencia, puede aprender a crecer en el mundo digital.</p>
+        <p>Nuestro contenido está diseñado para ir al grano: <strong>nada de teoría vacía, todo aplicable desde el primer día</strong>. Ya seas adolescente con una idea o adulto que quiere reconvertirse, acá encontrás tu camino.</p>
+      </div>
+      <div class="sobre-values">
+        <div class="sobre-value">
+          <div class="sobre-value-icon">🎯</div>
+          <div class="sobre-value-title">Directo</div>
+          <div class="sobre-value-text">Sin vueltas, sin relleno. Solo lo que necesitás saber.</div>
+        </div>
+        <div class="sobre-value">
+          <div class="sobre-value-icon">⚡</div>
+          <div class="sobre-value-title">Práctico</div>
+          <div class="sobre-value-text">Cada contenido es aplicable inmediatamente.</div>
+        </div>
+        <div class="sobre-value">
+          <div class="sobre-value-icon">🌎</div>
+          <div class="sobre-value-title">Para todos</div>
+          <div class="sobre-value-text">Adultos, adolescentes, principiantes.</div>
+        </div>
+        <div class="sobre-value">
+          <div class="sobre-value-icon">🚀</div>
+          <div class="sobre-value-title">Actualizado</div>
+          <div class="sobre-value-text">Contenido del mundo digital de hoy, no del pasado.</div>
+        </div>
+      </div>
+    </div>
+    <div class="sobre-visual">
+      <img src="logo.svg" alt="Las Cabras Marketing Digital">
+      <div class="sobre-visual-caption">Las Cabras · Marketing Digital</div>
+    </div>
+  </div>
+</section>
+
+<!-- CURSOS -->
+<section id="cursos">
+  <div class="cursos-intro">
+    <div>
+      <div class="section-label">Cursos online</div>
+      <h2 class="section-title">Aprendé a tu ritmo</h2>
+      <p class="section-subtitle">Cursos grabados, completos y listos para empezar cuando quieras.</p>
+    </div>
+  </div>
+  <div class="cursos-grid">
+    <div class="curso-card">
+      <div class="curso-card-top">
+        <span class="curso-card-badge">Nuevo</span>
+        <div class="curso-card-icon">📱</div>
+      </div>
+      <div class="curso-card-body">
+        <div class="curso-card-level">Nivel principiante</div>
+        <div class="curso-card-title">Marketing Digital desde Cero</div>
+        <div class="curso-card-desc">El punto de partida ideal. Entendé cómo funciona el ecosistema digital: redes sociales, SEO, anuncios y métricas. Sin conocimientos previos.</div>
+        <div class="curso-card-footer">
+          <div class="curso-price">$25 <span>USD</span></div>
+          <a href="#contacto" class="btn-small">Quiero este</a>
+        </div>
+      </div>
+    </div>
+    <div class="curso-card">
+      <div class="curso-card-top alt">
+        <span class="curso-card-badge pronto">Próximamente</span>
+        <div class="curso-card-icon">📊</div>
+      </div>
+      <div class="curso-card-body">
+        <div class="curso-card-level">Nivel intermedio</div>
+        <div class="curso-card-title">Meta Ads que Convierten</div>
+        <div class="curso-card-desc">Cómo crear y optimizar campañas de publicidad en Facebook e Instagram para obtener resultados reales sin malgastar el presupuesto.</div>
+        <div class="curso-card-footer">
+          <div class="curso-price">$39 <span>USD</span></div>
+          <button class="btn-small disabled">Próximamente</button>
+        </div>
+      </div>
+    </div>
+    <div class="curso-card">
+      <div class="curso-card-top alt2">
+        <span class="curso-card-badge pronto">Próximamente</span>
+        <div class="curso-card-icon">🎬</div>
+      </div>
+      <div class="curso-card-body">
+        <div class="curso-card-level">Nivel principiante</div>
+        <div class="curso-card-title">TikTok para Negocios</div>
+        <div class="curso-card-desc">Cómo usar TikTok para crecer orgánicamente y monetizar tu presencia. Estrategias de contenido, algoritmo y primeros pasos en TikTok Ads.</div>
+        <div class="curso-card-footer">
+          <div class="curso-price">$29 <span>USD</span></div>
+          <button class="btn-small disabled">Próximamente</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DESCARGABLES -->
+<section id="descargables">
+  <div class="desc-intro">
+    <div>
+      <div class="section-label">Recursos descargables</div>
+      <h2 class="section-title">Herramientas listas para usar</h2>
+      <p class="section-subtitle">Guías, plantillas y checklists para aplicar ahora mismo.</p>
+    </div>
+  </div>
+  <div class="desc-grid">
+    <div class="desc-card">
+      <div class="desc-card-header">
+        <div class="desc-card-ico">📄</div>
+        <div class="desc-card-type">PDF Guía</div>
+      </div>
+      <div class="desc-card-title">Guía de Marketing Digital para Principiantes</div>
+      <div class="desc-card-desc">Todo lo esencial en un documento. Conceptos clave, plataformas, métricas y primeros pasos explicados sin tecnicismos.</div>
+      <div class="desc-card-footer">
+        <span class="tag-free-badge">Gratis</span>
+        <a href="#contacto" class="btn-small">Descargar</a>
+      </div>
+    </div>
+    <div class="desc-card">
+      <div class="desc-card-header">
+        <div class="desc-card-ico">✅</div>
+        <div class="desc-card-type">Checklist</div>
+      </div>
+      <div class="desc-card-title">Checklist para lanzar tu marca en redes</div>
+      <div class="desc-card-desc">Lista de verificación completa para crear y configurar correctamente tus perfiles en Instagram, TikTok y Facebook.</div>
+      <div class="desc-card-footer">
+        <span class="tag-free-badge">Gratis</span>
+        <a href="#contacto" class="btn-small">Descargar</a>
+      </div>
+    </div>
+    <div class="desc-card">
+      <div class="desc-card-header">
+        <div class="desc-card-ico">📅</div>
+        <div class="desc-card-type">Plantilla</div>
+      </div>
+      <div class="desc-card-title">Calendario editorial de contenido 30 días</div>
+      <div class="desc-card-desc">Plantilla editable para planificar un mes completo de contenido en todas tus redes. Con ideas y estructura incluidas.</div>
+      <div class="desc-card-footer">
+        <div class="desc-price">$9 <span style="font-size:13px;font-weight:400;color:var(--text-muted)">USD</span></div>
+        <a href="#contacto" class="btn-small">Obtener</a>
+      </div>
+    </div>
+    <div class="desc-card">
+      <div class="desc-card-header">
+        <div class="desc-card-ico">📊</div>
+        <div class="desc-card-type">Plantilla</div>
+      </div>
+      <div class="desc-card-title">Dashboard de métricas para Looker Studio</div>
+      <div class="desc-card-desc">Plantilla lista para conectar tus cuentas y tener un panel de control con todas tus métricas digitales en un solo lugar.</div>
+      <div class="desc-card-footer">
+        <div class="desc-price">$15 <span style="font-size:13px;font-weight:400;color:var(--text-muted)">USD</span></div>
+        <a href="#contacto" class="btn-small">Obtener</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEOS YOUTUBE -->
+<section id="videos">
+  <div class="yt-header">
+    <div class="section-label">Canal de YouTube</div>
+    <h2 class="section-title">Contenido gratuito</h2>
+    <p class="section-subtitle">Videos educativos, tutoriales y estrategias que podés aplicar hoy mismo.</p>
+  </div>
+  <div class="yt-grid" id="yt-grid">
+    <div class="yt-placeholder">
+      <strong>🎬 Próximamente en YouTube</strong>
+      <p>El canal de Las Cabras está en preparación. Suscribite a nuestro newsletter para ser el primero en saber cuando subamos el primer video.</p>
+      <a href="#contacto" class="btn-primary" style="display:inline-block; margin-top:1.5rem;">Avisame cuando salga</a>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog">
+  <div class="blog-intro">
+    <div class="section-label">Blog</div>
+    <h2 class="section-title">Artículos y estrategias</h2>
+    <p class="section-subtitle">Contenido escrito para que aprendas mientras leés.</p>
+  </div>
+  <div class="blog-grid">
+    <div class="blog-card">
+      <div class="blog-card-top" style="background: var(--navy-dark); font-size: 80px;">🚀
+        <span class="blog-cat">Marketing</span>
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-meta">15 min de lectura · Marketing Digital</div>
+        <div class="blog-card-title">¿Qué es el marketing digital y por qué aprenderlo en 2025?</div>
+        <div class="blog-card-desc">Una guía completa para entender el mundo digital: qué es, cómo funciona, qué disciplinas incluye y por qué hoy es la habilidad más valiosa del mercado laboral y del emprendimiento.</div>
+        <a href="#" class="blog-link">Leer artículo</a>
+      </div>
+    </div>
+    <div class="blog-right">
+      <div class="blog-card small">
+        <div class="blog-card-top" style="background: var(--accent);">📱
+          <span class="blog-cat">Redes</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-meta">8 min · Redes Sociales</div>
+          <div class="blog-card-title">Cómo el algoritmo de Instagram decide quién te ve</div>
+          <div class="blog-card-desc">Entendé las reglas del juego para que tu contenido llegue a más personas sin pagar publicidad.</div>
+          <a href="#" class="blog-link">Leer</a>
+        </div>
+      </div>
+      <div class="blog-card small">
+        <div class="blog-card-top" style="background: #1a1a35;">🎯
+          <span class="blog-cat">Publicidad</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-meta">10 min · Meta Ads</div>
+          <div class="blog-card-title">Los 5 errores más comunes al pautar en Facebook e Instagram</div>
+          <div class="blog-card-desc">Errores que cometen el 90% de los que empiezan con publicidad paga y cómo evitarlos.</div>
+          <a href="#" class="blog-link">Leer</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO / NEWSLETTER -->
+<section id="contacto">
+  <div class="contacto-wrap">
+    <div>
+      <div class="section-label">Contacto</div>
+      <h2 class="section-title">Hablemos</h2>
+      <p class="section-subtitle" style="margin-bottom: 2rem;">¿Tenés una consulta, querés una clase privada o simplemente saludar? Escribinos.</p>
+      <div class="form-group">
+        <label>Tu nombre</label>
+        <input id="contactNombre" type="text" placeholder="¿Cómo te llamás?">
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input id="contactEmail" type="email" placeholder="tu@email.com">
+      </div>
+      <div class="form-group">
+        <label>Asunto</label>
+        <select id="contactAsunto">
+          <option>Consulta sobre cursos</option>
+          <option>Quiero un recurso descargable</option>
+          <option>Clase privada</option>
+          <option>Otro</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Mensaje</label>
+        <textarea id="contactMensaje" placeholder="Contanos en qué podemos ayudarte..."></textarea>
+      </div>
+      <button class="btn-primary" id="contactBtn" onclick="sendForm()" style="width:100%; text-align:center;">Enviar mensaje</button>
+      <div class="success-msg" id="contactSuccess">✓ ¡Mensaje enviado! Te respondemos pronto.</div>
+      <div class="success-msg" id="contactError" style="background:rgba(220,50,50,0.1);border-color:rgba(220,50,50,0.3);color:#e05555;">✗ Hubo un error, intentá de nuevo.</div>
+      <p class="form-note">También podés escribirnos por WhatsApp o redes sociales.</p>
+    </div>
+    <div class="newsletter-box">
+      <div class="section-label">Newsletter</div>
+      <div class="newsletter-title">Unite a la manada</div>
+      <div class="newsletter-text">Recibí contenido de marketing digital directo en tu inbox. Sin spam, solo valor.</div>
+      <ul class="newsletter-perks">
+        <li>Tips y estrategias semanales de marketing</li>
+        <li>Acceso anticipado a nuevos cursos y recursos</li>
+        <li>Descargá gratis la Guía para Principiantes</li>
+        <li>Descuentos exclusivos para suscriptores</li>
+      </ul>
+      <div class="nl-form">
+        <input type="email" id="nlEmail" placeholder="tu@email.com">
+        <button onclick="subscribeNewsletter()">Unirme</button>
+      </div>
+      <div class="success-msg" id="successMsg">
+        ✓ ¡Bienvenido a la manada! Revisá tu email para confirmar.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="logo.svg" alt="Logo">
+      <div class="footer-logo-text">
+        <span>Las Cabras</span>
+        <span>Marketing Digital</span>
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="#sobre-mi">Nosotros</a>
+      <a href="#cursos">Cursos</a>
+      <a href="#descargables">Recursos</a>
+      <a href="#videos">Videos</a>
+      <a href="#blog">Blog</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <div class="footer-copy">© 2025 Las Cabras Marketing Digital · Uruguay</div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+});
+
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwN4Vm53h69VU_HJz2nyMto6a55sD1ZSOd0-ilpZ3oUTl6REEWFlRK0U2Q2aSOFF6mlSg/exec';
+
+async function subscribeNewsletter() {
+  const email = document.getElementById('nlEmail').value.trim();
+  if (!email || !email.includes('@')) {
+    alert('Ingresá un email válido');
+    return;
+  }
+  const btn = document.querySelector('.nl-form button');
+  btn.textContent = 'Enviando...';
+  btn.disabled = true;
+  try {
+    await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ tipo: 'newsletter', email })
+    });
+    document.getElementById('successMsg').style.display = 'block';
+    document.getElementById('nlEmail').value = '';
+  } catch(e) {
+    alert('Hubo un error, intentá de nuevo.');
+  }
+  btn.textContent = 'Unirme';
+  btn.disabled = false;
+}
+
+async function sendForm() {
+  const nombre = document.getElementById('contactNombre').value.trim();
+  const email = document.getElementById('contactEmail').value.trim();
+  const asunto = document.getElementById('contactAsunto').value;
+  const mensaje = document.getElementById('contactMensaje').value.trim();
+  if (!nombre || !email || !mensaje) {
+    alert('Completá nombre, email y mensaje.');
+    return;
+  }
+  if (!email.includes('@')) {
+    alert('Ingresá un email válido.');
+    return;
+  }
+  const btn = document.getElementById('contactBtn');
+  btn.textContent = 'Enviando...';
+  btn.disabled = true;
+  document.getElementById('contactSuccess').style.display = 'none';
+  document.getElementById('contactError').style.display = 'none';
+  try {
+    await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ tipo: 'contacto', nombre, email, asunto, mensaje })
+    });
+    document.getElementById('contactSuccess').style.display = 'block';
+    document.getElementById('contactNombre').value = '';
+    document.getElementById('contactEmail').value = '';
+    document.getElementById('contactMensaje').value = '';
+  } catch(e) {
+    document.getElementById('contactError').style.display = 'block';
+  }
+  btn.textContent = 'Enviar mensaje';
+  btn.disabled = false;
+}
+
+function playVideo(el, videoId) {
+  el.classList.add('playing');
+  el.innerHTML = '<iframe src="https://www.youtube.com/embed/' + videoId + '?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+}
+</script>
+</body>
+</html>
